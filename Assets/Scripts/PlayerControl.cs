@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public float speed;
 
     public float upRotation;
-    public float downRotation;
+    public float minRotation;
 
     CharacterController characterControl;
     public Transform playerCam;
@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     {
         transform.Rotate(0, Input.GetAxis("Mouse X") * lookSensitivity, 0);
         xRotation -= Input.GetAxis("Mouse Y") * lookSensitivity;
-        xRotation = Mathf.Clamp(xRotation, -upRotation, downRotation);
+        xRotation = Mathf.Clamp(xRotation, -upRotation, minRotation);
         playerCam.localRotation = Quaternion.Euler(xRotation, 0, 0);
 
 
