@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -26,11 +27,15 @@ public class PlayerControl : MonoBehaviour
 
     int bulletIndex = 0;
 
+    public bool hasKey = false;
+    public TMP_Text itemText;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         characterControl = GetComponent<CharacterController>();
+        itemText.text = "nothing!";
         CreateBulletPool();
     }
 
@@ -48,7 +53,7 @@ public class PlayerControl : MonoBehaviour
         vel = transform.TransformDirection(vel);
         characterControl.Move(vel * Time.deltaTime);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             GameObject currentBullet = bulletPool[bulletIndex];
             currentBullet.SetActive(true);

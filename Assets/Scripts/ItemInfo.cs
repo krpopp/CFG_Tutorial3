@@ -5,34 +5,34 @@ using UnityEngine;
 public class ItemInfo : MonoBehaviour
 {
 
-    //public string itemName;
-    //public int itemValue;
+    public string itemName;
+    public int itemValue;
 
-    //PlayerControl playerScript;
+    PlayerControl playerScript;
 
-    //void Start()
-    //{
-    //    playerScript = GameObject.Find("Player").GetComponent<PlayerControl>();
-    //}
+    void Start()
+    {
+        playerScript = GameObject.Find("Player").GetComponent<PlayerControl>();
+    }
 
-    //void OnMouseOver()
-    //{
-    //    if (!playerScript.hasKey)
-    //    {
-    //        playerScript.itemText.text = itemName;
-    //    }
-    //}
+    void OnMouseOver()
+    {
+        if (!playerScript.hasKey)
+        {
+            playerScript.itemText.text = itemName;
+        }
+    }
 
-    //void OnMouseExit()
-    //{
-    //    playerScript.itemText.text = "nothing!";
-    //}
+    void OnMouseExit()
+    {
+        playerScript.itemText.text = "nothing!";
+    }
 
-    //void OnMouseDown()
-    //{
-    //    playerScript.hasKey = true;
-    //    playerScript.itemText.text = "nothing!";
-    //    Destroy(gameObject);
-    //}
+    void OnMouseDown()
+    {
+        playerScript.hasKey = true;
+        playerScript.itemText.text = "nothing!";
+        Destroy(gameObject);
+    }
 
 }
