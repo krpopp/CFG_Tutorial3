@@ -30,6 +30,16 @@ public class PlayerControl : MonoBehaviour
     public bool hasKey = false;
     //public TMP_Text itemText;
 
+    public Camera mainCam;
+
+    public float castDist;
+
+    public GameObject hitMarker;
+    Vector3 pointHit;
+    bool hitSometing;
+
+    GameObject hitObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +76,13 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        if (Input.GetMouseButtonDown(0) && hitObj != null)
+        {
+            hasKey = true;
+            Destroy(hitObj);
+            //Instantiate(hitMarker, pointHit, Quaternion.identity);
+        }
+
     }
 
     void CreateBulletPool()
@@ -76,6 +93,43 @@ public class PlayerControl : MonoBehaviour
             newBullet.SetActive(false);
             bulletPool.Add(newBullet);
         }
+    }
+
+    void FixedUpdate()
+    {
+        RaycastHit hit;
+        Vector3 rayStart = mainCam.ViewportToWorldPoint(Input.mousePosition);
+        //if (Physics.Raycast(rayStart, playerCam.forward, out hit, castDist))
+        //{
+        //    Debug.Log(hit.transform.name);
+        //    hitSometing = true;
+        //    pointHit = hit.point;
+        //    if (hit.transform.name == "Key") {
+        //        hitObj = hit.transform.gameObject;
+        //    }
+        //}
+        //else
+        //{
+        //    hitSometing = false;
+        //    hitObj = null;
+        //}
+
+        if (Physics.SphereCast(rayStart, 1, playerCam.forward, out hit, castDist))
+        {
+            Debug.Log(hit.transform.name);
+            if (hit.transform.name == "Key")
+            {
+                hitSometing = true;
+                hitObj = hit.transform.gameObject;
+            }
+        }
+        else
+        {
+            hitSometing = false;
+            hitObj = null;
+        }
+
+        Debug.DrawRay(rayStart, playerCam.forward * castDist, Color.red);
     }
 
 }
