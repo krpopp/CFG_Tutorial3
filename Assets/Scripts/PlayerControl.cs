@@ -28,14 +28,14 @@ public class PlayerControl : MonoBehaviour
     int bulletIndex = 0;
 
     public bool hasKey = false;
-    public TMP_Text itemText;
+    //public TMP_Text itemText;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         characterControl = GetComponent<CharacterController>();
-        itemText.text = "nothing!";
+        //itemText.text = "nothing!";
         CreateBulletPool();
     }
 

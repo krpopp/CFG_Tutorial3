@@ -19,19 +19,19 @@ public class ItemInfo : MonoBehaviour
     {
         if (!playerScript.hasKey)
         {
-            playerScript.itemText.text = itemName;
+            //playerScript.itemText.text = itemName;
         }
     }
 
     void OnMouseExit()
     {
-        playerScript.itemText.text = "nothing!";
+        //playerScript.itemText.text = "nothing!";
     }
 
     void OnMouseDown()
     {
         playerScript.hasKey = true;
-        playerScript.itemText.text = "nothing!";
+        //playerScript.itemText.text = "nothing!";
         Destroy(gameObject);
     }
 
